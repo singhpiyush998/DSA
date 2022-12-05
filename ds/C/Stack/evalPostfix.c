@@ -68,7 +68,7 @@ int evalPostfix(char* exp) {
 }
 
 int main(void) {
-    char* exp = "23*54*+9-";
+    char* exp = "762+*42/-";
     printf("The result is: %d\n", evalPostfix(exp));
     return 0;
 }

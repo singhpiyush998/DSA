@@ -94,7 +94,7 @@ void deleteNextNode(Node* prev) {
 
 // O(1)
 void addAfterNode(Node* prev, int data) {
-    if (prev == NULL) printf("Cant' add there!\n");
+    if (prev == NULL) printf("\nCant' add there!\n");
     else {
         Node* tmp = malloc(sizeof(data));
         tmp->data = data;
@@ -143,7 +143,7 @@ int main(void) {
                 printf("Enter the interger: ");
                 scanf("%d", &data);
                 // addAtIndex(data, index);
-                addAfterNode(getNode(index - 1), data);
+                addAfterNode(getNode(index - 1), data); // Assume: Index != 0
                 break;
             case 4:
                 printf("Enter the index: ");
@@ -163,5 +163,4 @@ int main(void) {
     }
     return 0;
 }
-
 
