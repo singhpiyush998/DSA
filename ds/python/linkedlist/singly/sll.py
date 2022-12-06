@@ -40,6 +40,7 @@ class LinkedList:
             while tmp.next.next is not None:
                 tmp = tmp.next
             tmp.next = None
+        return True
 
     def length(self):
         i = 0
@@ -52,51 +53,52 @@ class LinkedList:
     def insertAtIndex(self, node, index):
         if index < 0 or index > self.length():
             return False
+
+        # 0 <= index <= self.length()
+        prev = None
+        curr = self.head
+        for _ in range(0, index):
+            prev = curr
+            curr = curr.next
+        
+        # if loop doesn't run -> index = 0 -> prev = None
+        if prev is None:
+            node.next = self.head
+            self.head = node
         else:
-            # 0 <= index <= self.length()
-            prev = None
-            curr = self.head
-            for _ in range(0, index):
-                prev = curr
-                curr = curr.next
-            
-            # if loop doesn't run -> index = 0 -> prev = None
-            if prev is None:
-                node.next = self.head
-                self.head = node
-            else:
-                node.next = prev.next
-                prev.next = node
+            node.next = prev.next
+            prev.next = node
 
         return True
 
     def deleteAtIndex(self, index):
         if index < 0 or index >= self.length():
             return False
+
+        # 0 <= index < self.length()
+        prev = None
+        curr = self.head
+        for _ in range(0, index):
+            prev = curr
+            curr = curr.next
+        
+        # if loop doesn't run -> index = 0 -> prev = None
+        if prev is None:
+            self.head = self.head.next
         else:
-            # 0 <= index < self.length()
-            prev = None
-            curr = self.head
-            for _ in range(0, index):
-                prev = curr
-                curr = curr.next
-            
-            # if loop doesn't run -> index = 0 -> prev = None
-            if prev is None:
-                self.head = self.head.next
-            else:
-                prev.next = curr.next
+            prev.next = curr.next
 
         return False
 
     def display(self):
-        if (( tmp := self.head ) is not None):
-            while tmp is not None:
-                print(tmp.data, end = " ")
-                tmp = tmp.next
-            print()
-            return True
-        return False
+        if (( tmp := self.head ) is None):
+            return False
+
+        while tmp is not None:
+            print(tmp.data, end = " ")
+            tmp = tmp.next
+        print()
+        return True
 
 
 def main():
