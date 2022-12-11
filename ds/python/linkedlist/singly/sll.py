@@ -17,24 +17,25 @@ class LinkedList:
         self.head = node
 
     def deleteAtHead(self):
-        if self.head is not None:
-            self.head = self.head.next
-            return True
-        return False
+        if self.head is None:
+            return False
+
+        self.head = self.head.next
+        return True
 
     def insertAtTail(self, node):
-        if ( tmp := self.head ) is not None:
+        if ( tmp := self.head ) is None:
+            self.head = node
+        else:
             while tmp.next is not None:
                 tmp = tmp.next
             tmp.next = node
-        else:
-            self.head = node
 
     def deleteAtTail(self):
-        tmp = self.head
-        if tmp is None:
+        if ( tmp := self.head ) is None:
             return False
-        elif tmp.next is None:
+
+        if tmp.next is None:
             self.head = None
         else:
             while tmp.next.next is not None:
@@ -61,7 +62,7 @@ class LinkedList:
             prev = curr
             curr = curr.next
         
-        # if loop doesn't run -> index = 0 -> prev = None
+        # if loop doesn't run -> prev = None
         if prev is None:
             node.next = self.head
             self.head = node
@@ -82,7 +83,7 @@ class LinkedList:
             prev = curr
             curr = curr.next
         
-        # if loop doesn't run -> index = 0 -> prev = None
+        # if loop doesn't run -> prev = None
         if prev is None:
             self.head = self.head.next
         else:
