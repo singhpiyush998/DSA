@@ -68,7 +68,7 @@ class LinkedList:
             prev = curr
             curr = curr.next
         
-        # if loop doesn't run -> prev = None
+        # if loop doesn't run -> index - 0 -> prev = None
         if prev is None:
             node.next = self.head
             self.head = node
@@ -87,7 +87,7 @@ class LinkedList:
             prev = curr
             curr = curr.next
         
-        # if loop doesn't run -> prev = None
+        # if loop doesn't run -> index = 0 -> prev = None
         if prev is None:
             res = self.head.data
             self.head = self.head.next
@@ -100,7 +100,6 @@ class LinkedList:
 
 def main():
     sll = LinkedList()
-    # returns true if operation is successfull
     sll.insertAtHead(LinkedList.getNewNode(6))
     sll.insertAtHead(LinkedList.getNewNode(5))
     sll.insertAtHead(LinkedList.getNewNode(3))
