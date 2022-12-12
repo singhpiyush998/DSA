@@ -33,7 +33,7 @@ class LinkedList:
             raise Exception("Linked List is empty")
 
         self.head = self.head.next
-        return True
+        return tmp.data
 
     def insertAtTail(self, node):
         if (tmp := self.head) is None:
@@ -48,12 +48,14 @@ class LinkedList:
             raise Exception("Linked List is empty")
 
         if tmp.next is None:
+            res = self.head.data
             self.head = None
         else:
             while tmp.next.next is not None:
                 tmp = tmp.next
+            res = tmp.next.data
             tmp.next = None
-        return True
+        return res
 
     def insertAtIndex(self, node, index):
         if index < 0 or index > len(self):
@@ -74,8 +76,6 @@ class LinkedList:
             node.next = prev.next
             prev.next = node
 
-        return True
-
     def deleteAtIndex(self, index):
         if index < 0 or index >= len(self):
             raise IndexError("Invalid index")
@@ -89,11 +89,13 @@ class LinkedList:
         
         # if loop doesn't run -> prev = None
         if prev is None:
+            res = self.head.data
             self.head = self.head.next
         else:
+            res = curr.data
             prev.next = curr.next
 
-        return True
+        return res
 
 
 def main():
@@ -113,15 +115,21 @@ def main():
     sll.insertAtIndex(LinkedList.getNewNode(4), 2)
     print(sll)
     print(f"Length: {len(sll)}")
-    sll.deleteAtIndex(len(sll) - 1)
+    print(sll.deleteAtIndex(len(sll) - 1))
     print(sll)
     print(f"Length: {len(sll)}")
-    sll.deleteAtIndex(0)
+    print(sll.deleteAtIndex(0))
     print(sll)
     print(f"Length: {len(sll)}")
-    sll.deleteAtIndex(2)
+    print(sll.deleteAtIndex(2))
     print(sll)
     print(f"Length: {len(sll)}")
+    print(sll.deleteAtTail())
+    print(sll)
+    print(sll.deleteAtTail())
+    print(sll)
+    print(sll.deleteAtTail())
+    print(sll)
 
 if __name__ == "__main__":
     main()
