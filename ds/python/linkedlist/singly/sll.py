@@ -62,39 +62,32 @@ class LinkedList:
             raise IndexError("Invalid index")
 
         # 0 <= index <= len(self)
-        prev = None
-        curr = self.head
-        for _ in range(0, index):
-            prev = curr
-            curr = curr.next
-        
-        # if loop doesn't run -> index - 0 -> prev = None
-        if prev is None:
-            node.next = self.head
-            self.head = node
-        else:
-            node.next = prev.next
-            prev.next = node
+        if (index == 0):
+            return self.insertAtHead(node)
+
+        # 1 <= index <= len(self)
+        prev = self.head
+        for _ in range(1, index):
+            prev = prev.next
+
+        node.next = prev.next
+        prev.next = node
 
     def deleteAtIndex(self, index):
         if index < 0 or index >= len(self):
             raise IndexError("Invalid index")
 
         # 0 <= index < len(self)
-        prev = None
-        curr = self.head
-        for _ in range(0, index):
-            prev = curr
-            curr = curr.next
-        
-        # if loop doesn't run -> index = 0 -> prev = None
-        if prev is None:
-            res = self.head.data
-            self.head = self.head.next
-        else:
-            res = curr.data
-            prev.next = curr.next
+        if (index == 0):
+            return self.deleteAtHead()
 
+        # 1 <= index < len(self)
+        prev = self.head
+        for _ in range(1, index):
+            prev = prev.next
+
+        res = prev.next.data
+        prev.next = prev.next.next
         return res
 
 
@@ -103,32 +96,35 @@ def main():
     sll.insertAtHead(LinkedList.getNewNode(6))
     sll.insertAtHead(LinkedList.getNewNode(5))
     sll.insertAtHead(LinkedList.getNewNode(3))
-    print(sll) # 3 4 5
-    print(f"Length: {len(sll)}")
+    print(sll) # 3 5 6
+    print(f"Length: {len(sll)}\n")
     sll.insertAtTail(LinkedList.getNewNode(7))
-    print(sll)
-    print(f"Length: {len(sll)}")
+    print(sll) # 3 5 6 7
+    print(f"Length: {len(sll)}\n")
     sll.insertAtIndex(LinkedList.getNewNode(2), 0)
-    print(sll)
-    print(f"Length: {len(sll)}")
+    print(sll) # 2 3 5 6 7
+    print(f"Length: {len(sll)}\n")
     sll.insertAtIndex(LinkedList.getNewNode(4), 2)
-    print(sll)
-    print(f"Length: {len(sll)}")
-    print(sll.deleteAtIndex(len(sll) - 1))
-    print(sll)
-    print(f"Length: {len(sll)}")
-    print(sll.deleteAtIndex(0))
-    print(sll)
-    print(f"Length: {len(sll)}")
-    print(sll.deleteAtIndex(2))
-    print(sll)
-    print(f"Length: {len(sll)}")
-    print(sll.deleteAtTail())
-    print(sll)
-    print(sll.deleteAtTail())
-    print(sll)
-    print(sll.deleteAtTail())
-    print(sll)
+    print(sll) # 2 3 4 5 6 7
+    print(f"Length: {len(sll)}\n")
+    print(sll.deleteAtIndex(len(sll) - 1), "popped")
+    print(sll) # 2 3 4 5 6
+    print(f"Length: {len(sll)}\n")
+    print(sll.deleteAtIndex(0), "popped")
+    print(sll) # 3 4 5 6
+    print(f"Length: {len(sll)}\n")
+    print(sll.deleteAtIndex(2), "popped")
+    print(sll) # 3 4 6
+    print(f"Length: {len(sll)}\n")
+    print(sll.deleteAtTail(), "popped")
+    print(sll) # 3 4
+    print(f"Length: {len(sll)}\n")
+    print(sll.deleteAtTail(), "popped")
+    print(sll) # 3
+    print(f"Length: {len(sll)}\n")
+    print(sll.deleteAtTail(), "popped")
+    print(sll) # Blank
+    print(f"Length: {len(sll)}\n")
 
 if __name__ == "__main__":
     main()
