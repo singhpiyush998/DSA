@@ -14,14 +14,16 @@ bool isEmpty() {
 
 void enqueue(int x) {
     if ((rear + 1) % MAX_SIZE == front) return;
-    else if (isEmpty()) front = rear = 0; 
+
+    if (isEmpty()) front = rear = 0; 
     else rear = (rear + 1) % MAX_SIZE;
     data[rear] = x;
 }
 
 void dequeue() {
     if (isEmpty()) return;
-    else if(front == rear) front = rear = -1;
+
+    if(front == rear) front = rear = -1;
     else front = (front + 1) % MAX_SIZE;
 }
 
