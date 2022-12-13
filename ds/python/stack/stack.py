@@ -12,6 +12,7 @@ class Stack:
         temp = self.top
         while temp:
             yield temp.data
+            temp = temp.next
 
     def __repr__(self):
         return f"Stack({', '.join(str(node) for node in self)})"
