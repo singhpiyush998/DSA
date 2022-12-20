@@ -28,7 +28,7 @@ class LinkedList:
         node.next = self.head
         self.head = node
 
-    def deleteAtHead(self):
+    def removeAtHead(self):
         if (tmp := self.head) is None:
             raise Exception("Linked List is empty")
 
@@ -62,7 +62,7 @@ class LinkedList:
             raise IndexError("Invalid index")
 
         # 0 <= index <= len(self)
-        if (index == 0):
+        if index == 0:
             return self.insertAtHead(node)
 
         # 1 <= index <= len(self)
@@ -73,13 +73,13 @@ class LinkedList:
         node.next = prev.next
         prev.next = node
 
-    def deleteAtIndex(self, index):
+    def removeAtIndex(self, index):
         if index < 0 or index >= len(self):
             raise IndexError("Invalid index")
 
         # 0 <= index < len(self)
-        if (index == 0):
-            return self.deleteAtHead()
+        if index == 0:
+            return self.removeAtHead()
 
         # 1 <= index < len(self)
         prev = self.head
@@ -107,13 +107,13 @@ def main():
     sll.insertAtIndex(LinkedList.getNewNode(4), 2)
     print(sll) # 2 3 4 5 6 7
     print(f"Length: {len(sll)}\n")
-    print(sll.deleteAtIndex(len(sll) - 1), "popped")
+    print(sll.removeAtIndex(len(sll) - 1), "popped")
     print(sll) # 2 3 4 5 6
     print(f"Length: {len(sll)}\n")
-    print(sll.deleteAtIndex(0), "popped")
+    print(sll.removeAtIndex(0), "popped")
     print(sll) # 3 4 5 6
     print(f"Length: {len(sll)}\n")
-    print(sll.deleteAtIndex(2), "popped")
+    print(sll.removeAtIndex(2), "popped")
     print(sll) # 3 4 6
     print(f"Length: {len(sll)}\n")
     print(sll.deleteAtTail(), "popped")
