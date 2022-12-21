@@ -34,20 +34,13 @@ char pop() {
 
 int main(void) {
     char s[] = "Hello";
+
     int i = 0;
-    while (s[i] != '\0') {
-        push(s[i]);
-        i++;
-    }
-    
+    while (s[i]) push(s[i++]);
     printf("%s\n", s);
 
     int j = 0;
-    while (s[j] != '\0') {
-        s[j] = pop();
-        j++;
-    }
-
+    while (s[j]) s[j++] = pop();
     printf("%s\n", s);
 
     return 0;
