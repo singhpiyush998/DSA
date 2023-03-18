@@ -1,6 +1,5 @@
 from random import randint
 
-
 class Graph:
     def __init__(self, paths):
         self.paths = paths
@@ -14,19 +13,27 @@ class Graph:
 def visit(v):
     print(v, end=" ")
 
-def bfs(G, v):
-    marked = [False] * len(G)
+def dfs_post(G, v):
+    global marked
+    marked[v] = True
+    for w in G.neighbours(v):
+        if not marked[w]:
+            dfs_pre(G, w)
 
-    queue = [v]
-    while len(queue) > 0:
-        v = queue.pop(0)
-        if not marked[v]:
-            visit(v)
-            marked[v] = True
+    visit(v)
 
-            for w in G.neighbours(v):
-                if not marked[w]:
-                    queue.append(w)
+marked = []
+def dfs_pre(G, v):
+    visit(v)
+    global marked
+    marked[v] = True
+    for w in G.neighbours(v):
+        if not marked[w]:
+            dfs_pre(G, w)
+
+
+def dfs_iter(G, v):
+    pass
 
 def main():
     paths = {
@@ -41,7 +48,12 @@ def main():
     l = list(paths)
     arbitrary_vertex = l[randint(0, len(l) - 1)]
 
-    bfs(graph, arbitrary_vertex)
+    global marked
+    marked = [False] * len(graph)
+
+    # dfs_pre(graph, 0)
+    dfs_post(graph, arbitrary_vertex)
+    # dfs_iter(graph, 0)
 
 if __name__ == "__main__":
     main()
