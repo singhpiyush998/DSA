@@ -18,7 +18,7 @@ def dfs_post(G, v):
     marked[v] = True
     for w in G.neighbours(v):
         if not marked[w]:
-            dfs_pre(G, w)
+            dfs_post(G, w)
 
     visit(v)
 
