@@ -9,7 +9,7 @@ def threeSum(nums: list[int]) -> list[list[int]]:
     for i, x in enumerate(nums):
         visited = set()
         for y in nums[i + 1:]:
-            # In two sum, if target - value not in visted then add value to visited
+            # two sum: if target - value not in visted then add value to visited
             # x + y + z = 0
             # x = -y - z => y + z = -x
             # therefore target is -x and value is y
