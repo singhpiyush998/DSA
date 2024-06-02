@@ -63,8 +63,8 @@ void heapifyDown() {
       break;
     } else {
       swap(index, smallerChildIndex);
+      index = smallerChildIndex;
     }
-    index = smallerChildIndex;
   }
 }
 
