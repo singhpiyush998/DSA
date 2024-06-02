@@ -4,15 +4,17 @@ from random import randint
 class Graph:
     def __init__(self, paths):
         self.paths = paths
-    
+
     def neighbours(self, vertex):
         return self.paths[vertex]
 
     def __len__(self):
         return len(self.paths)
 
+
 def visit(v):
     print(v, end=" ")
+
 
 def bfs(G, v):
     marked = [False] * len(G)
@@ -28,7 +30,9 @@ def bfs(G, v):
                 if not marked[w]:
                     queue.append(w)
 
+
 def main():
+    # Adjancency list representation
     paths = {
         0: [1, 3, 2],
         1: [3, 0],
@@ -42,6 +46,7 @@ def main():
     arbitrary_vertex = l[randint(0, len(l) - 1)]
 
     bfs(graph, arbitrary_vertex)
+
 
 if __name__ == "__main__":
     main()
