@@ -17,11 +17,9 @@ int getParentIndex(int childIndex) { return (childIndex - 1) / 2; }
 int leftChild(int parentIndex) {
   return minheap.items[getLeftChildIndex(parentIndex)];
 }
-
 int rightChild(int parentIndex) {
   return minheap.items[getRightChildIndex(parentIndex)];
 }
-
 int parent(int index) { return minheap.items[getParentIndex(index)]; }
 
 bool hasLeftChild(int index) { return getLeftChildIndex(index) < minheap.size; }
