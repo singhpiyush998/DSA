@@ -1,12 +1,9 @@
 def insertionSort(arr):
-    for i in range(1, len(arr)):
-        tmp = arr[i];
-        j = i - 1;
-        while (j >= 0 and arr[j] > tmp):
-            arr[j + 1] = arr[j]
-            j = j - 1
-        arr[j + 1] = tmp
-        
+    for i in range(len(arr) - 1):
+        for j in range(i + 1, 0, -1):
+            if arr[j] > arr[j - 1]:
+                break
+            arr[j], arr[j - 1] = arr[j - 1], arr[j]
     return arr
 
 def main():
