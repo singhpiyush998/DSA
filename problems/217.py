@@ -1,7 +1,7 @@
 def containsDuplicate(nums):
-    dt = {}
-    for i in nums:
-        if dt.get(i) != None:
+    st = set()
+    for num in nums:
+        if num in st:
             return True
-        dt[i] = True
+        st.add(num)
     return False
