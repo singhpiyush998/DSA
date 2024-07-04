@@ -35,10 +35,10 @@ its index. If it does not exist, return -1.
 
 # TIME: O(n) Space: O(1)
 def firstUniqChar(s: str) -> int:
-    freq = [-1] * 255
+    freq = [-1] * 26
 
     for i, c in enumerate(s):
-        freq[ord(c)] = i if freq[ord(c)] == -1 else -2
+        freq[ord(c) - ord('a')] = i if freq[ord(c) - ord('a')] == -1 else -2
 
     res = 1000001
     for i in freq:
