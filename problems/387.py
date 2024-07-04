@@ -22,16 +22,29 @@ its index. If it does not exist, return -1.
 #     return res
 
 # TIME: O(n^2) Space: O(1)
+# def firstUniqChar(s: str) -> int:
+#     for i in range(len(s)):
+#         isRepeated = False
+#         for j in range(len(s)):
+#             if i != j and s[i] == s[j]:
+#                 isRepeated = True
+#                 break
+#         if not isRepeated:
+#             return i
+#     return -1
+
+# TIME: O(n) Space: O(1)
 def firstUniqChar(s: str) -> int:
-    for i in range(len(s)):
-        isRepeated = False
-        for j in range(len(s)):
-            if i != j and s[i] == s[j]:
-                isRepeated = True
-                break
-        if not isRepeated:
-            return i
-    return -1
+    freq = [-1] * 255
+
+    for i, c in enumerate(s):
+        freq[ord(c)] = i if freq[ord(c)] == -1 else -2
+
+    res = 1000001
+    for i in freq:
+        if i >= 0:
+            res = min(res, i)
+    return res if res != 1000001 else -1
 
 print(firstUniqChar("leetcode"))
 print(firstUniqChar("loveleetcode"))
