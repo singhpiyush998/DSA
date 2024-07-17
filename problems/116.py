@@ -48,17 +48,33 @@ class Node:
 
 # BFS: Right to left
 # Space: O(n) Time: O(n)
+# def connect(root: Optional[Node]) -> Optional[Node]:
+#     if not root: return None
+
+#     q = collections.deque([root])
+#     while q:
+#         rightNode = None
+#         for _ in range(len(q)):
+#             node = q.popleft()
+#             node.next, rightNode = rightNode, node
+#             if node.right: # check if queue has "a" child, if one then both i.e not leaf as perfect btree
+#                 q.append(node.right)
+#                 q.append(node.left)
+
+#     return root
+
+
+# Time: O(n) Space: O(1)
 def connect(root: Optional[Node]) -> Optional[Node]:
-    if not root: return None
+    curr, next = root, root.left if root else None
 
-    q = collections.deque([root])
-    while q:
-        rightNode = None
-        for _ in range(len(q)):
-            node = q.popleft()
-            node.next, rightNode = rightNode, node
-            if node.right: # check if queue has "a" child, if one then both i.e not leaf as perfect btree
-                q.append(node.right)
-                q.append(node.left)
+    while curr and next:
+        curr.left.next = curr.right
+        if curr.next:
+            curr.right.next = curr.next.left
 
+        curr = curr.next
+        if not curr:
+            curr = next
+            next = curr.left
     return root
