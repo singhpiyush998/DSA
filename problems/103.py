@@ -41,11 +41,8 @@ def zigzagLevelOrder(root: Optional[TreeNode]) -> list[list[int]]:
 
 # Time: O(n) Space: O(n)
 # def zigzagLevelOrder(root: Optional[TreeNode]) -> list[list[int]]:
-#     if not root: return []
-
 #     res = []
-
-#     queue = collections.deque([root])
+#     queue = collections.deque([root] if root else [])
 #     direction = 1
 #     while queue:
 #         level = []

@@ -34,10 +34,8 @@ def levelOrderBottom(root: Optional[TreeNode]) -> list[list[int]]:
 
 # Time: O(n) Space: O(n)
 # def levelOrderBottom(root: Optional[TreeNode]) -> list[list[int]]:
-#     if not root: return []
-
 #     res = collections.deque()
-#     queue = collections.deque([root])
+#     queue = collections.deque([root] if root else [])
 #     while queue:
 #         level = []
 #         for _ in range(len(queue)):

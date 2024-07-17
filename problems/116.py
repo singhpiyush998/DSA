@@ -31,9 +31,7 @@ class Node:
 
 # Time: O(n) Space: O(n)
 # def connect(root: Optional[Node]) -> Optional[Node]:
-#     if not root: return None
-
-#     q = collections.deque([(root, 0)])
+#     q = collections.deque([(root, 0)] if root else [])
 #     while q:
 #         node, level = q.popleft()
 #         if q:
@@ -49,9 +47,7 @@ class Node:
 # BFS: Right to left
 # Space: O(n) Time: O(n)
 # def connect(root: Optional[Node]) -> Optional[Node]:
-#     if not root: return None
-
-#     q = collections.deque([root])
+#     q = collections.deque([root] if root else [])
 #     while q:
 #         rightNode = None
 #         for _ in range(len(q)):
