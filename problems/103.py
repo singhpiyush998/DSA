@@ -17,24 +17,21 @@ class TreeNode:
 
 # Time: O(n) Space: O(n)
 def zigzagLevelOrder(root: Optional[TreeNode]) -> list[list[int]]:
-    if not root: return []
-
     res = []
-    q = collections.deque([root])
+    q = collections.deque([root] if root else [])
     leftToRight = True
     while q:
         currLevel = []
         for _ in range(len(q)):
             node = q.popleft() if leftToRight else q.pop()
-            if node:
-                currLevel.append(node.val)
-                if leftToRight:
-                    q.append(node.left)
-                    q.append(node.right)
-                else:
-                    q.appendleft(node.right)
-                    q.appendleft(node.left)
-        if len(currLevel): res.append(currLevel)
+            currLevel.append(node.val)
+            if leftToRight:
+                if node.left: q.append(node.left)
+                if node.right: q.append(node.right)
+            else:
+                if node.right: q.appendleft(node.right)
+                if node.left: q.appendleft(node.left)
+        res.append(currLevel)
         leftToRight = not leftToRight
 
     return res
