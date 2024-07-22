@@ -28,6 +28,8 @@ class Solution:
             currSum = prevSum + root.val
             x = currSum - targetSum
             if x in freq:
+                # even though that key is in the dictionary, its value can be 0
+                # that's why we don't wanna blindly increment by 1
                 self.count += freq[x]
 
             if currSum in freq:
@@ -37,6 +39,9 @@ class Solution:
 
             dfs(root.left, currSum)
             dfs(root.right, currSum)
+
+            # we reduce the count of current sum so that in another path,
+            # if we encounter the same current sum/x value, this one doesn't interfere with it.
             freq[currSum] -= 1
 
         dfs(root, 0)
