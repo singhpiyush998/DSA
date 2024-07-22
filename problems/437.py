@@ -21,7 +21,7 @@ class Solution:
     # Time: O(n) Space: O(h)
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
         self.count = 0
-        freq = {0:1} # maps current path sum -> its frequency
+        freq = {0:1} # maps Path Sum -> frequency
         def dfs(root, prevSum):
             if not root: return
 
