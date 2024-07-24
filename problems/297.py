@@ -25,7 +25,7 @@ class Codec:
         :rtype: str
         """
         if not root:
-            return "X"
+            return "X,"
         return str(root.val) + "," + self.serialize(root.left) + self.serialize(root.right)
 
     def deserialize(self, data: str):
@@ -35,3 +35,14 @@ class Codec:
         :rtype: TreeNode
         """
         queue = collections.deque(data.split(','))
+
+        def dfs():
+            val = queue.popleft()
+            if val == "X":
+                return None
+
+            node = TreeNode(int(val))
+            node.left = dfs()
+            node.right = dfs()
+            return node
+        return dfs()
