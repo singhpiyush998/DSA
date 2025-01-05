@@ -5,7 +5,9 @@ Given a collection of numbers, nums, that might contain duplicates,
 return all possible unique permutations in any order.
 """
 
-def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+from collections import Counter
+
+def permuteUnique(self, nums: list[int]) -> list[list[int]]:
     res = []
 
     # To make unique choices per level

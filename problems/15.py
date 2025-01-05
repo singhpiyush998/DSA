@@ -1,4 +1,6 @@
 """
+3Sum
+
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
 such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 Notice that the solution set must not contain duplicate triplets.
@@ -7,11 +9,11 @@ Notice that the solution set must not contain duplicate triplets.
 def threeSum(nums: list[int]) -> list[list[int]]:
     res = []
     nums.sort()
-    
+
     for i, x in enumerate(nums):
         if i > 0 and x == nums[i - 1]:
             continue
-        
+
         # Two sum 2: Use a left and right pointer
         l, r = i + 1, len(nums) - 1
         while l < r:

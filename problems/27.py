@@ -1,4 +1,6 @@
 """
+Remove Element
+
 Given an integer array nums and an integer val, remove all occurrences of val
 in nums in-place. The order of the elements may be changed. Then return the
 number of elements in nums which are not equal to val.
@@ -31,6 +33,7 @@ Output: 5, nums = [0,1,4,0,3,_,_,_]
 #
 #     return k
 
+# TIME: O(n)
 def removeElement(nums: list[int], val: int) -> int:
     k = 0
     for num in nums:
@@ -38,7 +41,6 @@ def removeElement(nums: list[int], val: int) -> int:
             nums[k] = num
             k += 1
 
-    print(nums)
     return k
 
 

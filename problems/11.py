@@ -1,8 +1,12 @@
 """
-You are given an integer array height of length n. 
-There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+Container With Most Water
 
-Find two lines that together with the x-axis form a container, such that the container contains the most water.
+You are given an integer array height of length n.
+There are n vertical lines drawn such that the two endpoints of the
+ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container,
+such that the container contains the most water.
 
 Return the maximum amount of water a container can store.
 """
@@ -17,7 +21,7 @@ def maxArea(height: list[int]) -> int:
             l += 1
         else:
             r -= 1
-            
+
     return maximumArea
 
 print(maxArea([1,3,2,5,25,24,5]))

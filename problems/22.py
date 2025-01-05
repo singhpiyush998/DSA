@@ -5,7 +5,7 @@ Given n pairs of parentheses,
 write a function to generate all combinations of well-formed parentheses.
 """
 
-def generateParenthesis(self, n: int) -> List[str]:
+def generateParenthesis(n: int) -> list[str]:
     res = []
 
     def backtrack(currPara: list[str], opening_para_count: int, closing_para_count: int):
@@ -23,7 +23,7 @@ def generateParenthesis(self, n: int) -> List[str]:
         if closing_para_count < opening_para_count:
             currPara.append(')')
             backtrack(currPara, opening_para_count, closing_para_count + 1)
-            currPara.pop()           
+            currPara.pop()
 
 
     backtrack([], 0, 0)

@@ -25,12 +25,12 @@ def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
             return
 
         # Our Choices
-        # 1st choice
+        # 1st choice - choose the number
         curr.append(candidates[i])
-        dfs(i, curr, total + candidates[i])
-
-        # 2nd choice
+        dfs(i, curr, total + candidates[i]) # passing the same index makes sure we can choose the same number multiple times
         curr.pop()
+
+        # 2nd choice - ignore the number
         dfs(i + 1, curr, total)
 
 

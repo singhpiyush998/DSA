@@ -32,7 +32,7 @@ def search(self, nums: list[int], target: int) -> bool:
         # that would make it impossible to do binary search in cases where
         # it is possible
         if nums[m] == nums[l]:
-            # can't determine if middile is in left or right sorted portion
+            # can't determine if middle is in left or right sorted portion
             l += 1
         elif nums[m] > nums[l]:
             # middle is in left sorted portion

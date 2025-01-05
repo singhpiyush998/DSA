@@ -1,4 +1,6 @@
 """
+Maximum Subarray
+
 Given an integer array nums, find the subarray
 with the largest sum, and return its sum.
 
@@ -28,6 +30,7 @@ Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 # as the prefix and if it is negative and curr element is positive then
 # we increment left pointer to the current element
 # the right pointer is the one going from start to end.
+# Basically, until my current subarray's sum becomes -ve, we keep it going
 def maxSubArray(nums: list[int]) -> int:
     maxSum = nums[0]
     currSum = 0
